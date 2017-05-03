@@ -1,0 +1,22 @@
+{
+  "name": "data-exchange",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bip39": "^2.3.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1",
+    "semantic-ui-css": "^2.2.10",
+    "semantic-ui-react": "^0.68.2"
+  },
+  "devDependencies": {
+    "react-scripts": "0.9.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
