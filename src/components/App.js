@@ -7,14 +7,14 @@ import {
 
 
 import Home from './Home';
-import Wallet from './Wallet';
+import WalletLoader from '../containers/WalletLoader';
 
 
 const App = () => (
     <Router>
         <div>
             <Route exact path="/" component={Home}/>
-            <Route path="/wallet" component={Wallet}/>
+            <Route path="/wallet" component={WalletLoader}/>
         </div>
     </Router>
 );
