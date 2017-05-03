@@ -6,6 +6,7 @@ const identity = (state = {}, action) => {
             });
         case 'SET_MNEMONIC_SEED':
             return Object.assign({}, state, {
+                tempSeed: null,
                 seed: action.seed
             });
 
