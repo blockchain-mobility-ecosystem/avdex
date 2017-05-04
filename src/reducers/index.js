@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux'
-import identity from './identity';
+import { reducer as formReducer } from 'redux-form'
+
+import identity from './identity'
+
 
 const dex = combineReducers({
+    form: formReducer,
     identity
 })
 

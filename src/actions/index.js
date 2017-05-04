@@ -1,15 +1,15 @@
-import bip39 from 'bip39';
+import bip39 from 'bip39'
 
-export const generateMnemonicSeed = () => {
+export const generateMnemonic = () => {
     return {
-        type: 'GENERATE_MNEMONIC_SEED',
+        type: 'GENERATE_MNEMONIC',
         seed: bip39.generateMnemonic()
     }
 }
 
-export const setMnemonicSeed = (seed) => {
+export const setSeed = (seed) => {
     return {
-        type: 'SET_MNEMONIC_SEED',
-        seed
+        type: 'SET_SEED',
+        seed: bip39.mnemonicToSeed(seed)
     }
 }

@@ -1,18 +1,26 @@
+import * as cc from '../cc'
+
+
 const identity = (state = {}, action) => {
     switch (action.type) {
-        case 'GENERATE_MNEMONIC_SEED':
+        case 'GENERATE_MNEMONIC':
             return Object.assign({}, state, {
-                tempSeed: action.seed
-            });
-        case 'SET_MNEMONIC_SEED':
-            return Object.assign({}, state, {
-                tempSeed: null,
                 seed: action.seed
-            });
+            })
+        case 'SET_SEED':
+            const keypair = cc.keypair(action.seed)
+
+            return Object.assign({}, state, {
+                seed: null,
+                keys: {
+                    public: keypair.publicKey,
+                    private: keypair.privateKey
+                }
+            })
 
         default:
-            return state;
+            return state
     }
 }
 
-export default identity;
+export default identity

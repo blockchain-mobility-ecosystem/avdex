@@ -1,22 +1,25 @@
-import { connect } from 'react-redux';
-import { generateMnemonicSeed } from '../actions';
-import Wallet from '../components/Wallet';
+import { connect } from 'react-redux'
+import { generateMnemonic, setSeed } from '../actions'
+import WalletForm from '../components/Wallet'
+
 
 const mapStateToProps = (state) => {
+    console.log('state', state);
     return {
-        tempSeed: state.identity.tempSeed
-    };
+        initialValues: state.identity
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onGenerateMnemonicSeed: () => dispatch(generateMnemonicSeed())
-    };
+        onSubmit: values => dispatch(setSeed(values.seed)),
+        onGenerateMnemonic: () => dispatch(generateMnemonic())
+    }
 }
 
 const WalletLoader = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Wallet);
+)(WalletForm)
 
-export default WalletLoader;
+export default WalletLoader

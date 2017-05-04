@@ -9,6 +9,8 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 
 
+import './cc';
+
 let store = createStore(
     dex,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
