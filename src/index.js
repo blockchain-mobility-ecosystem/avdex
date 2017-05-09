@@ -6,7 +6,7 @@ import dex from './reducers'
 import App from './components/App'
 
 import './index.css';
-import 'semantic-ui-css/semantic.min.css';
+import 'semantic-ui-css/semantic.css';
 
 
 import './cc';

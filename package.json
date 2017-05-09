@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bigchaindb-driver": "file:./../js-bigchaindb-quickstart/",
     "bip39": "^2.3.0",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
@@ -12,8 +11,9 @@
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "redux-form": "^6.6.3",
+    "semantic-ui": "^2.2.10",
     "semantic-ui-css": "^2.2.10",
-    "semantic-ui-react": "^0.68.2"
+    "semantic-ui-react": "^0.68.3"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"

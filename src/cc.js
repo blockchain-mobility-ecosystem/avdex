@@ -34,4 +34,4 @@ const signedCreateTx = signTransaction(createPokeTx, ash.privateKey);
 console.log(signedCreateTx);
 */
 
-export const keypair = (seed) => new Ed25519Keypair(seed);
+export const keypair = (seed) => new Ed25519Keypair(seed.slice(0, 32));
