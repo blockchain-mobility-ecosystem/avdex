@@ -14,8 +14,8 @@ import './cc';
 
 let store = createStore(
     dex,
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(thunk)
 )
 
 render(
@@ -24,4 +24,3 @@ render(
     </Provider>,
     document.getElementById('root')
 )
-

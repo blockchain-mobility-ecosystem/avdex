@@ -1,10 +1,10 @@
 import {
     Ed25519Keypair,
-    makeEd25519Condition,
-    makeOutput,
-    makeCreateTransaction,
-    makeTransferTransaction,
-    signTransaction,
+    // makeEd25519Condition,
+    // makeOutput,
+    // makeCreateTransaction,
+    // makeTransferTransaction,
+    // signTransaction,
 } from 'bigchaindb-driver';
 
 /*

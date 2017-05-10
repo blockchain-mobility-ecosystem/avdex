@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { generateMnemonic, setSeed } from '../actions'
 import WalletForm from '../components/Wallet'
 
 
