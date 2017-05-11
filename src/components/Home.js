@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 const Home = () => (
-    <div className="">
+    <div>
         <h1>Secure. Decentralized. Open.</h1>
         <Button>
             <Link to="/wallet">

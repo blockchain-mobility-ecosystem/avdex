@@ -12,11 +12,10 @@ import dex from './reducers'
 
 import Home from './components/Home';
 import WalletLoader from './containers/WalletLoader';
+import ProfileLoader from './containers/ProfileLoader';
 
 import './index.css';
 import 'semantic-ui-css/semantic.css';
-
-import './cc';
 
 const history = createHistory()
 
@@ -35,6 +34,7 @@ render(
         <ConnectedRouter history={history}>
             <div>
                 <Route exact path="/" component={Home}/>
+                <Route path="/profile/edit" component={ProfileLoader}/>
                 <Route path="/wallet" component={WalletLoader}/>
             </div>
         </ConnectedRouter>

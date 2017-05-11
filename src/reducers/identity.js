@@ -1,20 +1,15 @@
-import * as cc from '../cc'
-
-
 const identity = (state = {}, action) => {
     switch (action.type) {
         case 'GENERATE_MNEMONIC':
             return Object.assign({}, state, {
                 seed: action.seed
             })
-        case 'SET_SEED':
-            const keypair = cc.keypair(action.seed)
-
+        case 'SET_KEYPAIR':
             return Object.assign({}, state, {
                 seed: null,
                 keys: {
-                    public: keypair.publicKey,
-                    private: keypair.privateKey
+                    public: action.publicKey,
+                    private: action.privateKey
                 }
             })
 

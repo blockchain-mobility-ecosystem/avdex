@@ -5,7 +5,7 @@ import {
     // makeCreateTransaction,
     // makeTransferTransaction,
     // signTransaction,
-} from 'bigchaindb-driver';
+} from 'js-bigchaindb-driver';
 
 /*
 const ash = new Ed25519Keypair();
