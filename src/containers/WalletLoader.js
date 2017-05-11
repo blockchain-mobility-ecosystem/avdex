@@ -8,7 +8,7 @@ import WalletForm from '../components/Wallet'
 export default connect(
 
     state => ({
-        initialValues: state.identity
+        initialValues: { seed: state.identity.seed }
     }),
 
     dispatch => ({

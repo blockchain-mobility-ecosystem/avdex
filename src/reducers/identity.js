@@ -7,9 +7,9 @@ const identity = (state = {}, action) => {
         case 'SET_KEYPAIR':
             return Object.assign({}, state, {
                 seed: null,
-                keys: {
-                    public: action.publicKey,
-                    private: action.privateKey
+                keypair: {
+                    publicKey: action.publicKey,
+                    privateKey: action.privateKey
                 }
             })
 

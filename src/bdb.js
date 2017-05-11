@@ -1,37 +1,24 @@
-import {
-    Ed25519Keypair,
-    // makeEd25519Condition,
-    // makeOutput,
-    // makeCreateTransaction,
-    // makeTransferTransaction,
-    // signTransaction,
-} from 'js-bigchaindb-driver';
+import * as driver from 'js-bigchaindb-driver'
 
-/*
-const ash = new Ed25519Keypair();
+const API_ENDPOINT = 'http://localhost:9984/api/v1/';
 
-console.log(ash.publicKey); // something like "DjPMHDD9JtgypDKY38mPz9f6owjAMAKhLuN1JfRAat8C"
-console.log(ash.privateKey); // something like "7Gf5YRch2hYTyeLxqNLgTY63D9K5QH2UQ7LYFeBGuKvo"
+export const keypair = (seed) => new driver.Ed25519Keypair(seed.slice(0, 32))
 
-// Let's get an output and condition that lets Ash be the recipient of the new asset we're creating
-const ashCondition = new makeEd25519Condition(ash.publicKey);
-const ashOutput = new makeOutput(ashCondition);
+export const publish = (publicKey, privateKey, payload) => {
+    // Create a transation
+    const tx = driver.Transaction.makeCreateTransaction(
+        payload,
+        null,
+        [ driver.Transaction.makeOutput(
+            driver.Transaction.makeEd25519Condition(publicKey))
+        ],
+        publicKey
+    );
 
-console.log(ashOutput);
-const pokeAsset = {
-    'name': 'Pikachu',
-    'trait': 'Will never, ever, EVAARRR leave your back'
-};
+    // sign/fulfill the transaction
+    const txSigned = driver.Transaction.signTransaction(tx, privateKey)
 
-const noMetadata = null; // Let's ignore that meta-stuff for now
-
-// Now let's go give Ash his beloved Pikachu
-const createPokeTx = makeCreateTransaction(pokeAsset, noMetadata, [ashOutput], ash.publicKey);
-
-console.log(createPokeTx);
-const signedCreateTx = signTransaction(createPokeTx, ash.privateKey);
-
-console.log(signedCreateTx);
-*/
-
-export const keypair = (seed) => new Ed25519Keypair(seed.slice(0, 32));
+    // send it off to BigchainDB
+    const conn = new driver.Connection(API_ENDPOINT, { 'Content-Type': 'application/json' })
+    return conn.postTransaction(txSigned)
+}

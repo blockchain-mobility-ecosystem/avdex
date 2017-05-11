@@ -11,6 +11,11 @@ const Home = () => (
                 Connect to your digital wallet.
             </Link>
         </Button>
+        <Button>
+            <Link to="/profile/edit">
+                Create your profile.
+            </Link>
+        </Button>
     </div>
 )
 
