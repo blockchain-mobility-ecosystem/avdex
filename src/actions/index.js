@@ -1,5 +1,5 @@
 import bip39 from 'bip39'
-import * as driver from '../bdb'
+import * as bdb from '../bdb'
 
 export function generateMnemonic () {
     return {
@@ -10,15 +10,23 @@ export function generateMnemonic () {
 
 export function setSeed (seed) {
     return function (dispatch) {
-        const keypair = driver.keypair(bip39.mnemonicToSeed(seed))
+        const keypair = bdb.keypair(bip39.mnemonicToSeed(seed))
         dispatch({
             type: 'SET_KEYPAIR',
             publicKey: keypair.publicKey,
             privateKey: keypair.privateKey
         })
-        dispatch({
-            type: 'LOADING_OFFERS'
-        })
+        bdb.getProfile(keypair.publicKey)
+            .then(tx => {
+                console.log(tx)
+                dispatch({
+                    type: 'SET_PROFILE',
+                    profile: {
+                        ...tx.asset.data.profile,
+                        _tx: tx.id
+                    }
+                })
+            })
     }
 }
 
@@ -26,12 +34,15 @@ export function submitProfile (profile) {
     return function (dispatch, getState) {
         const { publicKey, privateKey } = getState().identity.keypair
 
-        driver.publish(publicKey, privateKey, profile)
-            .then(res => {
-                console.log(res.json())
+        bdb.publish(publicKey, privateKey, { type: 'dex:profile', profile })
+            .then(tx => {
+                console.log(tx)
                 dispatch({
                     type: 'SET_PROFILE',
-                    profile: profile
+                    profile: {
+                        ...profile,
+                        _tx: tx.id
+                    }
                 })
             })
     }
