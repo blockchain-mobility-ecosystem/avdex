@@ -8,8 +8,37 @@ export function generateMnemonic () {
     }
 }
 
+function mapTransactionToAction (dispatch, txid) {
+    return bdb.getTransaction(txid)
+        .then(tx => {
+            switch (tx.asset.data.type) {
+                case 'dex:profile':
+                    dispatch({
+                        type: 'SET_PROFILE',
+                        profile: {
+                            ...tx.asset.data.profile,
+                            _tx: tx.id
+                        }
+                    })
+                    break
+                case 'dex:offer':
+                    dispatch({
+                        type: 'ADD_OFFER',
+                        offer: {
+                            ...tx.asset.data.offer,
+                            _tx: tx.id
+                        }
+                    })
+                    break
+                default:
+                    console.log(`Dunno what to do with tx {tx.id}`, tx)
+            }
+        })
+}
+
 export function setSeed (seed) {
     localStorage.setItem('seed', seed)
+
     return function (dispatch) {
         const keypair = bdb.keypair(bip39.mnemonicToSeed(seed))
         dispatch({
@@ -17,16 +46,9 @@ export function setSeed (seed) {
             publicKey: keypair.publicKey,
             privateKey: keypair.privateKey
         })
-        bdb.getProfile(keypair.publicKey)
-            .then(tx => {
-                dispatch({
-                    type: 'SET_PROFILE',
-                    profile: {
-                        ...tx.asset.data.profile,
-                        _tx: tx.id
-                    }
-                })
-            })
+
+        bdb.getUnspents(keypair.publicKey)
+            .then(txs => txs.map(mapTransactionToAction.bind(null, dispatch)))
     }
 }
 
@@ -36,7 +58,6 @@ export function submitProfile (profile) {
 
         bdb.publish(publicKey, privateKey, { type: 'dex:profile', profile })
             .then(tx => {
-                console.log(tx)
                 dispatch({
                     type: 'SET_PROFILE',
                     profile: {
@@ -52,11 +73,8 @@ export function submitOffer (offer) {
     return function (dispatch, getState) {
         const { publicKey, privateKey } = getState().identity.keypair
 
-        console.log(offer);
-
         bdb.publish(publicKey, privateKey, { type: 'dex:offer', offer})
             .then(tx => {
-                console.log(tx)
                 dispatch({
                     type: 'ADD_OFFER',
                     offer: {

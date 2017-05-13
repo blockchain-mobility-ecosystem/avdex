@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Button, Label } from 'semantic-ui-react'
 import { Menu, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
@@ -11,7 +11,7 @@ export default class AppMenu extends Component {
 
     render() {
         const { activeItem } = this.state
-        const { name } = this.props
+        const { name, offers } = this.props
 
         if (!name) {
             return null
@@ -31,7 +31,7 @@ export default class AppMenu extends Component {
                 </Menu.Item>
 
                 <Menu.Item as={Link} to="/offers" name='offers' active={activeItem === 'offers'} onClick={this.handleItemClick}>
-                    Your offers
+                    My offers <Label circular color="grey">{offers.mine.length}</Label>
                 </Menu.Item>
 
                 <Menu.Item name='messages' active={activeItem === 'messages'} onClick={this.handleItemClick} />

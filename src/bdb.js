@@ -1,7 +1,9 @@
 import * as driver from 'js-bigchaindb-driver'
 
 
-const API_ENDPOINT = 'http://localhost:9984/api/v1/';
+const API_ENDPOINT = 'http://localhost:9984/api/v1/'
+const conn = new driver.Connection(API_ENDPOINT)
+const CACHE = {}
 
 export const keypair = (seed) => new driver.Ed25519Keypair(seed.slice(0, 32))
 
@@ -20,14 +22,29 @@ export const publish = (publicKey, privateKey, payload) => {
     const txSigned = driver.Transaction.signTransaction(tx, privateKey)
 
     // send it off to BigchainDB
-    const conn = new driver.Connection(API_ENDPOINT)
     return conn.postTransaction(txSigned)
         .then(() => txSigned)
 }
 
+export const getUnspents = (publicKey, callback) => {
+    return conn.listOutputs({ public_key: publicKey, unspent: 'true'})
+        .then(unspents => unspents.map(elem => elem.split('/')[2]))
+}
+
 export const getTransaction = (txId) => {
-    const conn = new driver.Connection(API_ENDPOINT)
-    return conn.getTransaction(txId)
+    return new Promise((resolve, reject) => {
+        let tx = localStorage.getItem(txId)
+        if (tx) {
+            resolve(JSON.parse(tx))
+        } else {
+            conn.getTransaction(txId)
+                .then(tx => {
+                    localStorage.setItem(txId, JSON.stringify(tx))
+                    resolve(tx)
+                })
+                .catch(reason => reject(reason))
+        }
+    })
 }
 
 export const getProfile = (publicKey) => {
