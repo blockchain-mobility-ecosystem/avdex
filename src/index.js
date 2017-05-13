@@ -10,9 +10,7 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
 import dex from './reducers'
 
-import Home from './components/Home';
-import WalletLoader from './containers/WalletLoader';
-import ProfileLoader from './containers/ProfileLoader';
+import App from './components/App';
 
 import './index.css';
 import 'semantic-ui-css/semantic.css';
@@ -32,11 +30,7 @@ let store = createStore(
 render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <div>
-                <Route exact path="/" component={Home}/>
-                <Route path="/profile/edit" component={ProfileLoader}/>
-                <Route path="/wallet" component={WalletLoader}/>
-            </div>
+            <App />
         </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
