@@ -26,6 +26,14 @@ export default class AppMenu extends Component {
                     Welcome back, {name}
                 </Menu.Item>
 
+                <Menu.Item as={Link} to="/offers/add" name='offers/add' active={activeItem === 'offers/add'} onClick={this.handleItemClick}>
+                    Create offer
+                </Menu.Item>
+
+                <Menu.Item as={Link} to="/offers" name='offers' active={activeItem === 'offers'} onClick={this.handleItemClick}>
+                    Your offers
+                </Menu.Item>
+
                 <Menu.Item name='messages' active={activeItem === 'messages'} onClick={this.handleItemClick} />
                 <Menu.Item name='friends' active={activeItem === 'friends'} onClick={this.handleItemClick} />
                 <Menu.Menu position='right'>

@@ -9,6 +9,7 @@ export function generateMnemonic () {
 }
 
 export function setSeed (seed) {
+    localStorage.setItem('seed', seed)
     return function (dispatch) {
         const keypair = bdb.keypair(bip39.mnemonicToSeed(seed))
         dispatch({
@@ -18,7 +19,6 @@ export function setSeed (seed) {
         })
         bdb.getProfile(keypair.publicKey)
             .then(tx => {
-                console.log(tx)
                 dispatch({
                     type: 'SET_PROFILE',
                     profile: {
@@ -41,6 +41,26 @@ export function submitProfile (profile) {
                     type: 'SET_PROFILE',
                     profile: {
                         ...profile,
+                        _tx: tx.id
+                    }
+                })
+            })
+    }
+}
+
+export function submitOffer (offer) {
+    return function (dispatch, getState) {
+        const { publicKey, privateKey } = getState().identity.keypair
+
+        console.log(offer);
+
+        bdb.publish(publicKey, privateKey, { type: 'dex:offer', offer})
+            .then(tx => {
+                console.log(tx)
+                dispatch({
+                    type: 'ADD_OFFER',
+                    offer: {
+                        ...offer,
                         _tx: tx.id
                     }
                 })

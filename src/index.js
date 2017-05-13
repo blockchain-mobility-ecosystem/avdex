@@ -6,6 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { Route } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
+import { setSeed } from './actions'
 
 import thunk from 'redux-thunk'
 import dex from './reducers'
@@ -35,3 +36,12 @@ render(
     </Provider>,
     document.getElementById('root')
 )
+
+function boot() {
+    const seed = localStorage.getItem('seed')
+    if (seed) {
+        store.dispatch(setSeed(seed))
+    }
+}
+
+boot();
