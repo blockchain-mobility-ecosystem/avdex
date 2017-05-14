@@ -3,5 +3,8 @@ import Offers from '../components/Offers'
 
 
 export default connect(
-    store => {}
+    store => ({
+        list: store.offers.mine,
+        data: store.offers.data
+    })
 )(Offers)
