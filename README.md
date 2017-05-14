@@ -21,3 +21,6 @@ $ npm start
 
 Note: there are some problems using `yarn` to install `sematic-ui-react`,
 this is a known bug. Please use `npm` instead.
+
+## Authors
+![image](http://static.tvtropes.org/pmwiki/pub/images/starskyhutchmovie.jpg)
