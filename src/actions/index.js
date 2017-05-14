@@ -103,3 +103,9 @@ export function submitSearch ({ textQuery }) {
             })
     }
 }
+
+export function resetSearch() {
+    return {
+        type: 'RESET_SEARCH_RESULT'
+    }
+}

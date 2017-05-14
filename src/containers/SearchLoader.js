@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
-import { submitSearch } from '../actions'
+import { submitSearch, resetSearch } from '../actions'
 import SearchForm from '../components/Search'
 
 
@@ -15,7 +15,8 @@ export default connect(
     dispatch => ({
         onSubmit: values => {
             dispatch(submitSearch(values))
-        }
+        },
+        onUnmount: () => dispatch(resetSearch())
     })
 
 )(SearchForm)
