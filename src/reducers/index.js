@@ -4,13 +4,15 @@ import { routerReducer } from 'react-router-redux'
 
 import identity from './identity'
 import offers from './offers'
+import profiles from './profiles'
 
 
 const dex = combineReducers({
     form: formReducer,
     router: routerReducer,
     identity,
-    offers
+    offers,
+    profiles
 })
 
 export default dex

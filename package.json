@@ -14,6 +14,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-form": "^6.6.3",
     "redux-thunk": "^2.2.0",
+    "safe-access": "^0.1.0",
     "semantic-ui-css": "^2.2.10",
     "semantic-ui-react": "^0.68.3"
   },

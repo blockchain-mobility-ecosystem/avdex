@@ -4,7 +4,7 @@ import AppMenu from '../components/Menu'
 
 export default connect(
     state => ({
-        ...state.identity.profile,
+        ...state.profiles.data[state.identity.keypair.publicKey],
         offers: state.offers
     })
 )(AppMenu)

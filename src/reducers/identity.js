@@ -1,4 +1,12 @@
-const identity = (state = {}, action) => {
+const initialState = {
+    seed: null,
+    keypair: {
+        publicKey: null,
+        privateKey: null
+    }
+}
+
+const identity = (state = initialState, action) => {
     switch (action.type) {
         case 'GENERATE_MNEMONIC':
             return Object.assign({}, state, {
@@ -12,11 +20,6 @@ const identity = (state = {}, action) => {
                     privateKey: action.privateKey
                 }
             })
-        case 'SET_PROFILE':
-            return Object.assign({}, state, {
-                profile: action.profile
-            })
-
         default:
             return state
     }

@@ -14,9 +14,10 @@ function mapTransactionToAction (dispatch, txid) {
             switch (tx.asset.data.type) {
                 case 'dex:profile':
                     dispatch({
-                        type: 'SET_PROFILE',
+                        type: 'ADD_PROFILE',
                         profile: {
                             ...tx.asset.data.profile,
+                            _pk: tx.inputs[0].owners_before[0],
                             _tx: tx.id
                         }
                     })
@@ -50,6 +51,9 @@ export function setSeed (seed) {
         bdb.getUnspents(keypair.publicKey)
             .then(txs => txs.map(mapTransactionToAction.bind(null, dispatch)))
     }
+}
+
+export function fetchProfile (publicKey) {
 }
 
 export function submitProfile (profile) {
