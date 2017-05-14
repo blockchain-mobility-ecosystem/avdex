@@ -4,14 +4,24 @@ import { Link } from 'react-router-dom'
 
 
 const Landing = ({name}) => (
-    <div>
-        <h1>Secure. Decentralized. Open.</h1>
-        <Button as={Link} to="/wallet">
-            Connect to your digital wallet.
-        </Button>
-        <Button as={Link} to="/profile/edit">
-            Create your profile.
-        </Button>
+    <div id="landing">
+        <div className="main">
+            <h1>AVDEX // Autonomous Vehicles Data Exchange</h1>
+            <p>AVDEX stands for <strong>A</strong>utonomous <strong>V</strong>ehicle <strong>D</strong>ata <strong>Ex</strong>change. It is the first decentralized Data Exchange Platform that connects producers and consumers to exchange data–sets in a secure, privacy oriented fashion.</p>
+
+            <h2>Secure. Decentralized. Open.</h2>
+            <p>
+                <ul>
+                    <li><strong>Secure</strong>: every transaction in the system is cryptographically signed.</li>
+                    <li><strong>Decentralized</strong>: we run on <a href="https://www.bigchaindb.com">BigchainDB</a>, a scalable decentralized database.</li>
+                    <li><strong>Open</strong>: everybody can join the exchange.</li>
+                </ul>
+            </p>
+
+            <Button primary as={Link} to="/wallet">
+                Connect to your digital wallet.
+            </Button>
+        </div>
     </div>
 )
 

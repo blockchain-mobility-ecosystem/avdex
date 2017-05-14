@@ -3,3 +3,22 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+#landing {
+    background: url("../public/landing-bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    padding: 20% 0 10px;
+}
+
+#landing .main {
+    margin: 0 auto;
+    padding: 50px 10%;
+    color: white;
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+#landing .main p {
+    font-size: 1.1em;
+}

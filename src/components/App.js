@@ -16,8 +16,8 @@ import DashboardLoader from '../containers/DashboardLoader'
 const App = () => (
     <div>
         <MenuLoader />
+        <Route exact path="/" component={HomeLoader}/>
         <Container>
-            <Route exact path="/" component={HomeLoader}/>
             <Route exact path="/offers/add" component={OfferLoader}/>
             <Route exact path="/offers" component={OffersLoader}/>
             <Route path="/profile/edit" component={ProfileLoader}/>
