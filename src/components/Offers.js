@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Icon, Item, Label } from 'semantic-ui-react'
+import { Icon, Item } from 'semantic-ui-react'
 
 
 const Offers = () => (

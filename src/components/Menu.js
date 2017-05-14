@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Label } from 'semantic-ui-react'
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 
@@ -31,11 +30,9 @@ export default class AppMenu extends Component {
                 </Menu.Item>
 
                 <Menu.Item as={Link} to="/offers" name='offers' active={activeItem === 'offers'} onClick={this.handleItemClick}>
-                    My offers <Label circular color="grey">{offers.mine.length}</Label>
+                    My offers ({offers.mine.length})
                 </Menu.Item>
 
-                <Menu.Item name='messages' active={activeItem === 'messages'} onClick={this.handleItemClick} />
-                <Menu.Item name='friends' active={activeItem === 'friends'} onClick={this.handleItemClick} />
                 <Menu.Menu position='right'>
                     <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
                 </Menu.Menu>

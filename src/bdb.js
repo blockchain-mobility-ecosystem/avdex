@@ -3,7 +3,6 @@ import * as driver from 'js-bigchaindb-driver'
 
 const API_ENDPOINT = 'http://localhost:9984/api/v1/'
 const conn = new driver.Connection(API_ENDPOINT)
-const CACHE = {}
 
 export const keypair = (seed) => new driver.Ed25519Keypair(seed.slice(0, 32))
 
