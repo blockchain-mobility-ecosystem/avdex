@@ -17,8 +17,8 @@ const App = () => (
         <MenuLoader />
         <Container>
             <Route exact path="/" component={HomeLoader}/>
-            <Route path="/offers/add" component={OfferLoader}/>
-            <Route path="/offers" component={OffersLoader}/>
+            <Route exact path="/offers/add" component={OfferLoader}/>
+            <Route exact path="/offers" component={OffersLoader}/>
             <Route path="/profile/edit" component={ProfileLoader}/>
             <Route path="/wallet" component={WalletLoader}/>
             <Route path="/search" component={SearchLoader}/>
