@@ -90,11 +90,12 @@ export function submitSearch ({ textQuery }) {
     return function (dispatch, getState) {
         bdb.textSearch(textQuery)
             .then(searchRes => {
-                searchRes = searchRes.reduce((init, curr) => {
-                    init[curr.id] = curr.data
-                    return init
-                }, {})
-                console.log(searchRes)
+                searchRes = searchRes
+                    .filter(({ data }) => data.type === 'dex:offer')
+                    .reduce((init, curr) => {
+                        init[curr.id] = curr.data.offer
+                        return init
+                    }, {})
                 dispatch({
                     type: 'SET_SEARCH_RESULT',
                     searchRes
