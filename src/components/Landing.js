@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 const Landing = ({name}) => (
-    <div id="landing">
+    <div className="full-page">
         <div className="main">
             <h1>AVDEX // Autonomous Vehicles Data Exchange</h1>
             <p>AVDEX stands for <strong>A</strong>utonomous <strong>V</strong>ehicle <strong>D</strong>ata <strong>Ex</strong>change. It is the first decentralized Data Exchange Platform that connects producers and consumers to exchange data–sets in a secure, privacy oriented fashion.</p>

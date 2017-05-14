@@ -17,12 +17,12 @@ const App = () => (
     <div>
         <MenuLoader />
         <Route exact path="/" component={HomeLoader}/>
+        <Route path="/wallet" component={WalletLoader}/>
+        <Route path="/onboarding" component={ProfileLoader}/>
         <Container>
             <Route exact path="/offers/add" component={OfferLoader}/>
             <Route exact path="/offers" component={OffersLoader}/>
-            <Route path="/profile/edit" component={ProfileLoader}/>
             <Route path="/profiles/:publicKey" component={DashboardLoader}/>
-            <Route path="/wallet" component={WalletLoader}/>
             <Route path="/search" component={SearchLoader}/>
             <Route path="/logout" component={LogoutLoader}/>
         </Container>

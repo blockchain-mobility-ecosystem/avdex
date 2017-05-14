@@ -1,5 +1,7 @@
+import { push } from 'react-router-redux'
 import bip39 from 'bip39'
 import * as bdb from '../bdb'
+
 
 export function generateMnemonic () {
     return {
@@ -41,8 +43,9 @@ function mapTransactionToAction (dispatch, txid) {
 export function setSeed (seed) {
     localStorage.setItem('seed', seed)
 
-    return function (dispatch) {
+    return function (dispatch, getState) {
         const keypair = bdb.keypair(bip39.mnemonicToSeed(seed))
+
         dispatch({
             type: 'SET_KEYPAIR',
             publicKey: keypair.publicKey,
@@ -50,7 +53,17 @@ export function setSeed (seed) {
         })
 
         bdb.getUnspents(keypair.publicKey)
-            .then(txs => txs.map(mapTransactionToAction.bind(null, dispatch)))
+            .then(txs => Promise.all(txs.map(mapTransactionToAction.bind(null, dispatch))))
+            .then(_ => {
+                const state = getState()
+                const hasProfile = state.profiles.data[state.identity.keypair.publicKey]
+
+                if (hasProfile) {
+                    dispatch(push(`/profiles/${state.identity.keypair.publicKey}`))
+                } else {
+                    dispatch(push('/onboarding'))
+                }
+            })
     }
 }
 

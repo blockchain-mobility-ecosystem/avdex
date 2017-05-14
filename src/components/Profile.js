@@ -5,19 +5,26 @@ import { Button, Form } from 'semantic-ui-react'
 
 
 const Profile = ({ handleSubmit }) => (
-    <Form onSubmit={handleSubmit} autoComplete="off">
-        <Form.Field>
-            <label>Name</label>
-            <Field name="name" component="input" type="text" placeholder='Your name or your company name' />
-        </Form.Field>
+    <div className="full-page">
+        <div className="main">
+            <h1>AVDEX // Complete your public profile.</h1>
 
-        <Form.Field>
-            <label>Website</label>
-            <Field name="website" component="input" type="text" placeholder='' />
-        </Form.Field>
+            <Form onSubmit={handleSubmit} autoComplete="off">
+                <Form.Field>
+                    <label>Name</label>
+                    <Field name="name" component="input" type="text" placeholder='Your name or your company name' />
+                </Form.Field>
 
-        <Button primary type='submit'>Sign and submit</Button>
-    </Form>
+                <Form.Field>
+                    <label>Website</label>
+                    <Field name="website" component="input" type="text" placeholder='' />
+                </Form.Field>
+
+                <Button primary type='submit'>Sign and submit</Button>
+                <Button as='a' href='/logout'>Reset session</Button>
+            </Form>
+        </div>
+    </div>
 )
 
 Profile.propTypes = {
