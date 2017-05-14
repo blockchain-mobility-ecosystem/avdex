@@ -8,6 +8,7 @@ import ProfileLoader from '../containers/ProfileLoader'
 import OfferLoader from '../containers/OfferLoader'
 import OffersLoader from '../containers/OffersLoader'
 import MenuLoader from '../containers/MenuLoader'
+import LogoutLoader from '../containers/LogoutLoader'
 
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
             <Route path="/offers" component={OffersLoader}/>
             <Route path="/profile/edit" component={ProfileLoader}/>
             <Route path="/wallet" component={WalletLoader}/>
+            <Route path="/logout" component={LogoutLoader}/>
         </Container>
     </div>
 )

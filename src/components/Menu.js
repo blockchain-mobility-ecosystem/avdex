@@ -18,23 +18,26 @@ export default class AppMenu extends Component {
 
         return (
             <Menu pointing secondary>
-                <Menu.Item as={Link} to="/home" name='wat' active={activeItem === 'wat'} onClick={this.handleItemClick}>
-                    test
+                <Menu.Item>
+                    Welcome back,&nbsp;<strong>{name}</strong>
                 </Menu.Item>
+
                 <Menu.Item as={Link} to="/" name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
-                    Welcome back, {name}
+                    Home
                 </Menu.Item>
 
                 <Menu.Item as={Link} to="/offers/add" name='offers/add' active={activeItem === 'offers/add'} onClick={this.handleItemClick}>
                     Create offer
                 </Menu.Item>
 
+                {offers.mine.length ?
                 <Menu.Item as={Link} to="/offers" name='offers' active={activeItem === 'offers'} onClick={this.handleItemClick}>
                     My offers ({offers.mine.length})
                 </Menu.Item>
+                : null}
 
                 <Menu.Menu position='right'>
-                    <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
+                    <Menu.Item as={Link} to="/logout" name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
                 </Menu.Menu>
             </Menu>
         )

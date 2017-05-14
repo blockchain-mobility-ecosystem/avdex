@@ -85,3 +85,8 @@ export function submitOffer (offer) {
             })
     }
 }
+
+export function logout () {
+    localStorage.clear()
+    window.location.href = '/'
+}
