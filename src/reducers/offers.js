@@ -1,5 +1,5 @@
 const initialState = {
-    mine: [], // list of all offers (txids) owned by the current user
+    profiles: {}, // publicKey -> [offerId]
     search: [], // list of all search offers found
     data: {} // txid -> offer
 }
@@ -8,10 +8,13 @@ const offers = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_OFFER':
             return Object.assign({}, state, {
-                mine: [
-                    ...state.mine,
-                    action.offer._tx
-                ],
+                profiles: {
+                    ...state.profiles,
+                    [action.offer._pk]: [
+                        ...state.profiles[action.offer._pk] || [],
+                        action.offer._tx
+                    ]
+                },
                 data: {
                     ...state.data,
                     [action.offer._tx]: action.offer

@@ -10,6 +10,7 @@ import OfferLoader from '../containers/OfferLoader'
 import OffersLoader from '../containers/OffersLoader'
 import MenuLoader from '../containers/MenuLoader'
 import LogoutLoader from '../containers/LogoutLoader'
+import DashboardLoader from '../containers/DashboardLoader'
 
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
             <Route exact path="/offers/add" component={OfferLoader}/>
             <Route exact path="/offers" component={OffersLoader}/>
             <Route path="/profile/edit" component={ProfileLoader}/>
+            <Route path="/profiles/:publicKey" component={DashboardLoader}/>
             <Route path="/wallet" component={WalletLoader}/>
             <Route path="/search" component={SearchLoader}/>
             <Route path="/logout" component={LogoutLoader}/>

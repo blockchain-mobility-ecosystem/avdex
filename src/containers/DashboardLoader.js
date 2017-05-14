@@ -1,11 +1,19 @@
 import { connect } from 'react-redux'
-import Offers from '../components/Offers'
+import Dashboard from '../components/Dashboard'
+import { fetchProfile } from '../actions'
 
 
-export default (publicKey) => {
-    connect(
-        state => ({
-            ...state.identity.profile
-        })
-    )(Offers)
-}
+export default connect(
+
+    (state, ownProps) => ({
+        ...state.profiles.data[ownProps.match.params.publicKey],
+        publicKey: ownProps.match.params.publicKey,
+        offers: state.offers.profiles[ownProps.match.params.publicKey] || [],
+        data: state.offers.data
+    }),
+
+    dispatch => ({
+        onMount: () => {}
+    })
+
+)(Dashboard)

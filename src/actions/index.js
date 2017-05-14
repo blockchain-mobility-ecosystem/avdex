@@ -27,6 +27,7 @@ function mapTransactionToAction (dispatch, txid) {
                         type: 'ADD_OFFER',
                         offer: {
                             ...tx.asset.data.offer,
+                            _pk: tx.inputs[0].owners_before[0],
                             _tx: tx.id
                         }
                     })

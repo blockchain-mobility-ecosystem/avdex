@@ -11,7 +11,7 @@ export default class AppMenu extends Component {
 
     render() {
         const { activeItem } = this.state
-        const { name, offers } = this.props
+        const { name, _pk, offers } = this.props
 
         if (!name) {
             return null
@@ -23,7 +23,7 @@ export default class AppMenu extends Component {
                     Welcome back,&nbsp;<strong>{name}</strong>
                 </Menu.Item>
 
-                <Menu.Item as={Link} to="/" name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
+                <Menu.Item as={Link} to={`/profiles/${_pk}`} name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
                     Home
                 </Menu.Item>
 
@@ -31,9 +31,9 @@ export default class AppMenu extends Component {
                     Create offer
                 </Menu.Item>
 
-                {offers.mine.length ?
+                {offers.length ?
                 <Menu.Item as={Link} to="/offers" name='offers' active={activeItem === 'offers'} onClick={this.handleItemClick}>
-                    My Offers ({offers.mine.length})
+                    My Offers ({offers.length})
                 </Menu.Item>
                 : null}
 
