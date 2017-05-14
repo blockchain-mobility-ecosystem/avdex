@@ -28,6 +28,10 @@ const offers = (state = initialState, action) => {
                     ...action.searchRes
                 }
             })
+        case 'RESET_SEARCH_RESULT':
+            return Object.assign({}, state, {
+                search: []
+            })
         default:
             return state
     }
