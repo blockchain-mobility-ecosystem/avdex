@@ -109,14 +109,22 @@ export function logout () {
     window.location.href = '/'
 }
 
-export function submitSearch ({ textQuery }) {
+export function submitSearch ({ textQuery, minPrice, maxPrice }) {
     return function (dispatch, getState) {
         bdb.textSearch(textQuery)
             .then(searchRes => {
                 searchRes = searchRes
                     .filter(({ data }) => data.type === 'dex:offer')
+                    .map(el => el.data.offer)
+                    // TODO: Remove parseInt when we find out how to submit
+                    // numbers as values in semanticUI/reduxform
+                    .filter(({ price }) => {
+                        price = parseInt(price, 10)
+                        return price > (minPrice || -1)
+                            && price < (maxPrice || 1/0)
+                    })
                     .reduce((init, curr) => {
-                        init[curr.id] = curr.data.offer
+                        init[curr.id] = curr
                         return init
                     }, {})
                 dispatch({

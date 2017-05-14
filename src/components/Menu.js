@@ -38,7 +38,7 @@ export default class AppMenu extends Component {
                 : null}
 
                 <Menu.Item as={Link} to="/search" name='search' active={activeItem === 'search'} onClick={this.handleItemClick}>
-                    Search
+                    Search Offers
                 </Menu.Item>
 
                 <Menu.Menu position='right'>
