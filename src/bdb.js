@@ -1,3 +1,4 @@
+// TODO: Import specific modules
 import * as driver from 'js-bigchaindb-driver'
 
 
@@ -55,4 +56,9 @@ export const getProfile = (publicKey) => {
             return elem.asset.data.profile && elem.operation === 'CREATE'
         } catch (err) { return false }}))
         .then(txs => txs[0])
+}
+
+export const textSearch = (query) => {
+    const conn = new driver.Connection(API_ENDPOINT)
+    return conn.searchAssets(query)
 }

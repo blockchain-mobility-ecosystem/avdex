@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 export default class AppMenu extends Component {
+    // TODO: read activeItem from URL or smth
     state = { activeItem: 'home' }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -30,7 +31,11 @@ export default class AppMenu extends Component {
                 </Menu.Item>
 
                 <Menu.Item as={Link} to="/offers" name='offers' active={activeItem === 'offers'} onClick={this.handleItemClick}>
-                    My offers ({offers.mine.length})
+                    My Offers ({offers.mine.length})
+                </Menu.Item>
+
+                <Menu.Item as={Link} to="/search" name='search' active={activeItem === 'search'} onClick={this.handleItemClick}>
+                    Search
                 </Menu.Item>
 
                 <Menu.Menu position='right'>
