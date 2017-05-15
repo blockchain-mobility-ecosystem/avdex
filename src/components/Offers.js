@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, Icon, Item } from 'semantic-ui-react'
+import { Button, Icon, Item, Label } from 'semantic-ui-react'
 
-const OfferItem = ({ name, size, purpose, description, lighting }) => (
+const OfferItem = ({ name, size, price, purpose, description, lighting }) => (
     <Item>
         <Item.Image>
             <Icon name="database" size="huge"/>
@@ -10,12 +10,13 @@ const OfferItem = ({ name, size, purpose, description, lighting }) => (
         <Item.Content>
             <Item.Header>{name}</Item.Header>
             <Item.Meta>
-                <span className="size">{size}</span>
+                <Label>${price}</Label>
+                <span className="size">{size} GB</span>
             </Item.Meta>
             <Item.Description>{description}</Item.Description>
             <Item.Extra>
                 <Button primary floated='right'>
-                    Buy dataset
+                    View
                     <Icon name='right chevron' />
                 </Button>
             </Item.Extra>

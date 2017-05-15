@@ -46,6 +46,16 @@ const Offer = ({ handleSubmit }) => (
             <Field name="hash" component="input" type="text" placeholder='' />
         </Form.Field>
 
+        <Form.Field>
+            <label>Price</label>
+            <Field name="price"
+                   component="input"
+                   type="number"
+                   min="0.01"
+                   step="0.01"
+                   placeholder='' />
+        </Form.Field>
+
         <Button primary type='submit'>Sign and submit</Button>
     </Form>
 )
