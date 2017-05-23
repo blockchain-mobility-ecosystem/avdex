@@ -8,7 +8,7 @@ body {
     background: url("../public/landing-bg.jpg") no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
-    padding: 20% 0 10px;
+    padding: 10% 0 10px;
 }
 
 .full-page .main {
@@ -25,4 +25,12 @@ body {
 
 .full-page .ui.form .field > label {
     color: white;
+}
+
+.ui.secondary.pointing.menu {
+    background: #2185D0;
+}
+
+.ui.secondary.pointing.menu .item {
+    color: white !important;
 }

@@ -1,7 +1,10 @@
 import React from 'react'
-import { Button, Icon, Item, Label } from 'semantic-ui-react'
+import { Button, Icon, Item, Label, Rating } from 'semantic-ui-react'
+import marked from 'marked'
+import { API_ENDPOINT } from '../bdb'
 
-const OfferItem = ({ name, size, price, purpose, description, lighting }) => (
+
+const OfferItem = ({ _tx, name, size, price, purpose, description, lighting }) => (
     <Item>
         <Item.Image>
             <Icon name="database" size="huge"/>
@@ -12,8 +15,11 @@ const OfferItem = ({ name, size, price, purpose, description, lighting }) => (
             <Item.Meta>
                 <Label>${price}</Label>
                 <span className="size">{size} GB</span>
+                <span className="tx"><a href={`${API_ENDPOINT}transactions/${_tx}`} target="_blank">transaction</a></span>
+                <Rating icon='star' defaultRating={4} maxRating={5} disabled />
+
             </Item.Meta>
-            <Item.Description>{description}</Item.Description>
+            <Item.Description dangerouslySetInnerHTML={{__html: marked(description, {sanitaze: true})}}></Item.Description>
             <Item.Extra>
                 <Button primary floated='right'>
                     View

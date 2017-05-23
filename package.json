@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bip39": "^2.3.0",
+    "marked": "^0.3.6",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
