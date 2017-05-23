@@ -22,24 +22,26 @@ class Search extends Component {
                                type="text"
                                placeholder="Search for assets..." />
                     </Form.Field>
-                    <Form.Field>
-                        <label>Min. Price</label>
-                        <Field name="minPrice"
-                               component="input"
-                               type="number"
-                               min="0"
-                               step="0.01"
-                               placeholder='$0' />
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Max. Price</label>
-                        <Field name="maxPrice"
-                               component="input"
-                               type="number"
-                               min="0.01"
-                               step="0.01"
-                               placeholder='A thousand kisses (we cannot really determine the value of 1000 kisses)' />
-                    </Form.Field>
+                    <Form.Group widths='equal'>
+                        <Form.Field>
+                            <label>Min. Price</label>
+                            <Field name="minPrice"
+                                   component="input"
+                                   type="number"
+                                   min="0"
+                                   step="0.01"
+                                   placeholder='$0' />
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Max. Price</label>
+                            <Field name="maxPrice"
+                                   component="input"
+                                   type="number"
+                                   min="0.01"
+                                   step="0.01"
+                                   placeholder='A thousand kisses (we cannot really determine the value of 1000 kisses)' />
+                        </Form.Field>
+                    </Form.Group>
                     <Button primary type='submit'>Search</Button>
                 </Form>
                 <Offers list={search} data={data} />
