@@ -29,17 +29,17 @@ class Search extends Component {
                                    component="input"
                                    type="number"
                                    min="0"
-                                   step="0.01"
-                                   placeholder='$0' />
+                                   step="1"
+                                   placeholder='0' />
                         </Form.Field>
                         <Form.Field>
                             <label>Max. Price</label>
                             <Field name="maxPrice"
                                    component="input"
                                    type="number"
-                                   min="0.01"
-                                   step="0.01"
-                                   placeholder='A thousand kisses (we cannot really determine the value of 1000 kisses)' />
+                                   min="0"
+                                   step="1"
+                                   placeholder='' />
                         </Form.Field>
                     </Form.Group>
                     <Button primary type='submit'>Search</Button>

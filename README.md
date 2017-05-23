@@ -1,5 +1,8 @@
 # AVDEX — Autonomous Vehicles Data EXchange
 
+AVDEX is in active development. We will publish our roadmap and contributing
+guidelines soon!
+
 ## Run the app
 
 AVDEX uses a couple of [BigchainDB](https://github.com/bigchaindb/bigchaindb) features
@@ -41,6 +44,3 @@ $ npm start
 
 Note: there are some problems using `yarn` to install `sematic-ui-react`,
 this is a known bug. Please use `npm` instead.
-
-## Authors
-![image](http://static.tvtropes.org/pmwiki/pub/images/starskyhutchmovie.jpg)
